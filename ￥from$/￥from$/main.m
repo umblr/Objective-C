@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#define rate 102
 int main(int argc, const char * argv[])
 {
-    double const rate = 102;
+
     double yen;
     double doll;
     doll = 10.5;
