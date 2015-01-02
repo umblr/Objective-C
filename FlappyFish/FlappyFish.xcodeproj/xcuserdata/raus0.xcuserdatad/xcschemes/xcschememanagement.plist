@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Calculation.xcscheme</key>
+		<key>FlappyFish.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>E951176F1A36E73F0009EDA5</key>
+		<key>E9E076301A558F2700783A6C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E9E0764E1A558F2700783A6C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
