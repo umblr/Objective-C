@@ -93,11 +93,11 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    /*_fish.physicsBody.velocity = CGVectorMake(0, 0);*/
+    /*_fish.physicsBody.velocity = CGVectorMake(0, 0.5);*/
     [_fish.physicsBody applyImpulse:CGVectorMake(0, 2)];
 }
 
-/*CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
+CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
     if( value > max ) {
         return max;
     } else if( value < min ) {
@@ -105,11 +105,11 @@
     } else {
         return value;
     }
-}*/
+}
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    /*_fish.zRotation = clamp( -1, 0.5, _fish.physicsBody.velocity.dy * ( _fish.physicsBody.velocity.dy < 0 ? 0.001 : 0.002 ) );*/
+    _fish.zRotation = clamp( -1, 0.5, _fish.physicsBody.velocity.dy * ( _fish.physicsBody.velocity.dy < 0 ? 0.001 : 0.002 ) );
 }
 
 @end
