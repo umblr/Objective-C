@@ -16,6 +16,8 @@
 
 @implementation GameScene
 
+static NSInteger const kVerticalStoneGap = 100;
+
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
@@ -86,6 +88,38 @@
         dummy.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.frame.size.width, groundTexture.size.height * 2)];
         dummy.physicsBody.dynamic = NO;
         [self addChild:dummy];
+        
+        // Create stones
+        
+        SKTexture* _stoneTexture1 = [SKTexture textureWithImageNamed:@"Stone1"];
+        _stoneTexture1.filteringMode = SKTextureFilteringNearest;
+        SKTexture* _stoneTexture2 = [SKTexture textureWithImageNamed:@"Stone2"];
+        _stoneTexture2.filteringMode = SKTextureFilteringNearest;
+        
+        SKNode* stonePair = [SKNode node];
+        stonePair.position = CGPointMake( self.frame.size.width + _stoneTexture1.size.width * 2, 0 );
+        stonePair.zPosition = -10;
+        
+        CGFloat y = arc4random() % (NSInteger)( self.frame.size.height / 3 );
+        
+        SKSpriteNode* stone1 = [SKSpriteNode spriteNodeWithTexture:_stoneTexture1];
+        [stone1 setScale:2];
+        stone1.position = CGPointMake( 0, y );
+        stone1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:stone1.size];
+        stone1.physicsBody.dynamic = NO;
+        [stonePair addChild:stone1];
+        
+        SKSpriteNode* stone2 = [SKSpriteNode spriteNodeWithTexture:_stoneTexture2];
+        [stone2 setScale:2];
+        stone2.position = CGPointMake( 0, y + stone1.size.height + kVerticalStoneGap );
+        stone2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:stone2.size];
+        stone2.physicsBody.dynamic = NO;
+        [stonePair addChild:stone2];
+        
+        SKAction* movePipes = [SKAction repeatActionForever:[SKAction moveByX:-1 y:0 duration:0.02]];
+        [stonePair runAction:movePipes];
+        
+        [self addChild:stonePair];
         
     }
     return self;
