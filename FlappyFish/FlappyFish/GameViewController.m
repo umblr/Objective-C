@@ -8,6 +8,12 @@
 
 #import "GameViewController.h"
 #import "GameScene.h"
+#import <iAd/iAd.h>
+
+@interface GameViewController () <ADBannerViewDelegate>
+@property (weak, nonatomic) IBOutlet ADBannerView *bannerView;
+
+@end
 
 @implementation GameViewController
 
@@ -54,6 +60,38 @@
     return YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    CGRect bannerFrame = self.bannerView.frame;
+    bannerFrame.origin.y = self.view.frame.size.height;
+    self.bannerView.frame = bannerFrame;
+}
 
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    CGRect bannerFrame = banner.frame;
+    bannerFrame.origin.y
+    = self.view.frame.size.height - banner.frame.size.height;
+    
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         banner.frame = bannerFrame;
+                     }];
+    NSLog(@"広告在庫あり");
+}
+
+- (void)bannerView:(ADBannerView *)banner
+didFailToReceiveAdWithError:(NSError *)error
+{
+    CGRect bannerFrame = banner.frame;
+    bannerFrame.origin.y = self.view.frame.size.height;
+    
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         banner.frame = bannerFrame;
+                     }];
+    NSLog(@"広告在庫なし");
+}
 
 @end

@@ -38,6 +38,7 @@ static NSInteger const kVerticalStoneGap = 100;
         _canRestart = NO;
         
         self.physicsWorld.gravity = CGVectorMake( 0.0, -2.0 );
+        self.physicsWorld.contactDelegate = self;
         
         _seaColor = [SKColor colorWithRed:96.0/255.0 green:88.0/255.0 blue:248.0/255.0 alpha:1.0];
         [self setBackgroundColor:_seaColor];
