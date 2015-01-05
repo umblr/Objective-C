@@ -135,7 +135,7 @@ static NSInteger const kVerticalStoneGap = 100;
         
         // Initialize label and create a label which holds the score
         _score = 0;
-        _scoreLabelNode = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Wide"];
+        _scoreLabelNode = [SKLabelNode labelNodeWithFontNamed:@"Chalkboard SE Bold"];
         _scoreLabelNode.position = CGPointMake( CGRectGetMidX( self.frame ), 3 * self.frame.size.height / 4 );
         _scoreLabelNode.zPosition = 100;
         _scoreLabelNode.text = [NSString stringWithFormat:@"%ld", (long)_score];
@@ -256,7 +256,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
             // Flash background if contact is detected
             [self removeActionForKey:@"flash"];
             [self runAction:[SKAction sequence:@[[SKAction repeatAction:[SKAction sequence:@[[SKAction runBlock:^{
-                self.backgroundColor = [SKColor redColor];
+                self.backgroundColor = [SKColor yellowColor];
             }], [SKAction waitForDuration:0.05], [SKAction runBlock:^{
                 self.backgroundColor = _seaColor;
             }], [SKAction waitForDuration:0.05]]] count:4], [SKAction runBlock:^{
