@@ -8,7 +8,7 @@
 
 #import "GameScene.h"
 
-@interface GameScene () {
+@interface GameScene () <SKPhysicsContactDelegate> {
     SKSpriteNode* _fish;
     SKColor* _seaColor;
     SKTexture* _stoneTexture1;
