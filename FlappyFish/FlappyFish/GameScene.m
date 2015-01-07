@@ -256,7 +256,7 @@ CGFloat clamp(CGFloat min, CGFloat max, CGFloat value) {
             // Flash background if contact is detected
             [self removeActionForKey:@"flash"];
             [self runAction:[SKAction sequence:@[[SKAction repeatAction:[SKAction sequence:@[[SKAction runBlock:^{
-                self.backgroundColor = [SKColor yellowColor];
+                self.backgroundColor = [SKColor cyanColor];
             }], [SKAction waitForDuration:0.05], [SKAction runBlock:^{
                 self.backgroundColor = _seaColor;
             }], [SKAction waitForDuration:0.05]]] count:4], [SKAction runBlock:^{
