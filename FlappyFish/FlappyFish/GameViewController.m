@@ -60,7 +60,7 @@
     return YES;
 }
 
-/*- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     CGRect bannerFrame = self.bannerView.frame;
@@ -92,6 +92,6 @@ didFailToReceiveAdWithError:(NSError *)error
                          banner.frame = bannerFrame;
                      }];
     NSLog(@"広告在庫なし");
-}*/
+}
 
 @end
